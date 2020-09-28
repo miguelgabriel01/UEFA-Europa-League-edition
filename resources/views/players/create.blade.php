@@ -1,5 +1,20 @@
 @extends('layouts.app')
 @section('content')
+
+<div class="d-flex align-items-center justify-content-center " style="height:50px; margin:10px;">
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Ações disponiveis
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{{ route ('players.index')}}">Listar seus jogadores</a>
+    <a class="dropdown-item" href="{{ route ('players.create')}}">Cadastar novo jogador</a>
+  </div>
+</div>
+</div>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -18,9 +33,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('nacionalidade') }}</label>
+                            <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Nacionalidade') }}</label>
                             <div class="col-md-6">
-                                <input id="nationality" type="email" class="form-control @error('email') is-invalid @enderror" name="nationality" value='' required autocomplete="email">
+                                <input id="nationality" type="text" class="form-control @error('email') is-invalid @enderror" name="nationality" value='' required autocomplete="email">
                             </div>
                         </div>
 
@@ -53,6 +68,13 @@
                                 <input id="photo" type="text" class="form-control @error('name') is-invalid @enderror" name="photo"  required autocomplete="photo" autofocus>
                             </div>
                         </div>!-->
+
+                        <div class="form-group row">
+                            <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <div class="col-md-6">
+                                <textarea id="nationality" class="form-control @error('email') is-invalid @enderror" name="description" value='' required autocomplete="email"></textarea>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

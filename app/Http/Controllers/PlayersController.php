@@ -49,23 +49,31 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Player  $player
+     * @param  \App\Models\Players  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show(Players $player)
     {
-        //
+        return view('players.show', compact('player'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Player  $player
+     * @param  \App\Models\Players  $player
      * @return \Illuminate\Http\Response
      */
-    public function edit(Player $player)
+    public function edit(Players $player)
     {
-        //
+        if($player->user_id===Auth::id()){
+
+            return view('players.edith', compact('player'));
+            }
+            else{
+                return redirect()->route('players.index')
+                                         ->with('error', 'você não autorização para editar esta publicação. por favor, vá dormi')
+                                         ->withInput();
+            }
     }
 
     /**
