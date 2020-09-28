@@ -44,7 +44,7 @@ class PlayersController extends Controller
                 $player->user_id = Auth::id();//identificamos o autor
                 $player->save();//salvamos
                 return redirect('players')->with('success', 'Jogador cadastrado com sucesso');
-    }
+    } 
 
     /**
      * Display the specified resource.
@@ -91,11 +91,21 @@ class PlayersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Player  $player
+     * @param  \App\Models\Players  $player
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Player $player)
+    public function destroy(Players $player)
     {
-        //
+        if($player->user_id===Auth::id()){
+            $player->delete();
+            return redirect()->route('players.index')->with('success', 'Post deletado com sucesso');
+        }
+        else{
+            return redirect()->route('players.index')
+                                     ->with('error', 'você não tem autorização para deletar essa publicação')
+                                     ->withInput();
+        }
+
+
     }
 }

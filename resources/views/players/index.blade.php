@@ -51,9 +51,14 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                <a type="button" class="btn btn-sm btn-outline-secondary" href="{{route('players.show',$players->id)}}">Mais</a>
+                  <form action="{{route('players.destroy',$players->id)}}" method="POST">
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{route('players.show',$players->id)}}">Mais</a>
                   <a type="button" class="btn btn-sm btn-outline-secondary" href="{{route('players.edit',$players->id)}}">Editar</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Apagar</button>
+
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Apagar</button>
+                  </form>
 
                 </div>
                 <small class="text-muted">{{$players->id}}</small>
