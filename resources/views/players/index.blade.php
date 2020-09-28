@@ -74,6 +74,7 @@
   </div>
 
 </main>
-        
+      
+{{ $player->links()}}
 
 @endsection

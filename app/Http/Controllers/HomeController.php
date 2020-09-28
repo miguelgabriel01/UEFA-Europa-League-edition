@@ -15,6 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $player = Players::orderBy('created_at', 'desc')->paginate(10);
+        $player = Players::orderBy('created_at', 'desc')->paginate(3);
         return view('home', compact('player'));    }
 }
