@@ -22,7 +22,7 @@
                 <div class="card-header text-light bg-dark">{{ __('Cadastre seu jogador') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('players.store') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                         <div class="form-group row">
                         <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('Posição') }}</label>
                         <div class="col-md-6">
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" class="form-control" name="position">
                             <!-- <option selected>Posição</option>!-->
                                 <option value="Goleiro">Goleiro</option>
                                 <option value="Lateral direito">Lateral direito</option>

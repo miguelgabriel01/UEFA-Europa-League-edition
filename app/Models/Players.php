@@ -10,7 +10,7 @@ class Players extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','nationality','age','position','photo',
+        'name','nationality','age','position','description',
     ];
 
      //função de acesso ao usuario
