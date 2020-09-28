@@ -80,12 +80,20 @@ class PlayersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Player  $player
+     * @param  \App\Models\Players  $player
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Player $player)
+    public function update(Request $request, Players $player)
     {
-        //
+        if($player->user_id===Auth::id()){
+            $player->update($request->all());
+            return redirect()->route('players.index')->with('success', 'Post atualizado com sucesso');
+        }
+        else{
+            return redirect()->route('players.index')
+                                     ->with('error', 'você não autorização para editar esta publicação')
+                                     ->withInput();
+        }
     }
 
     /**

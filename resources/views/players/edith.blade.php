@@ -22,8 +22,7 @@
                 <div class="card-header text-light bg-dark">{{ __('Edite os dados sobre seu jogador') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('players.update' , $player->id) }}" method="POST">
-                    
+                <form action="{{ route('players.update' , $player->id) }}" method="POST">                    
                     @csrf 
                     @method( 'PUT')
 
