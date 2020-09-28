@@ -12,4 +12,9 @@ class Players extends Model
     protected $fillable = [
         'name','nationality','age','position','photo',
     ];
+
+     //função de acesso ao usuario
+     public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

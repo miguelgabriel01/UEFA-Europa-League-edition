@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Player;
+use App\Models\Players;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;//classe de autenticação
 
 class PlayersController extends Controller
 {
@@ -14,7 +15,9 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //
+        $player = Players::where('user_id',Auth::id())->orderBy('created_at','desc')->paginate(3);//asc para do mais velho ao mais novo
+
+        return view('players.index',compact('player'));
     }
 
     /**
@@ -24,7 +27,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        return view('players.create');//redireiona para a view de criação de post
+        return view('players.create');//redireiona para a view de cadastro de jogadr
     }
 
     /**
@@ -35,7 +38,12 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                //Post::create($request->all());
+                $player = new Players($request->all());///criamos
+
+                $player->user_id = Auth::id();//identificamos o autor
+                $player->save();//salvamos
+                return redirect('players')->with('success', 'Jogador cadastrado com sucesso');
     }
 
     /**
