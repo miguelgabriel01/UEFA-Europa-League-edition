@@ -72,7 +72,7 @@
                         <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
                             <div class="col-md-6">
-                                <textarea id="nationality" class="form-control @error('email') is-invalid @enderror" name="description" value='' required autocomplete="email"></textarea>
+                                <textarea id="nationality" class="form-control @error('email') is-invalid @enderror" name="description" value='' maxlength="250" required autocomplete="email"></textarea>
                             </div>
                         </div>
 

@@ -65,6 +65,13 @@
                         </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <div class="col-md-6">
+                                <textarea id="nationality" class="form-control @error('email') is-invalid @enderror" name="description" value='' maxlength="250" required autocomplete="email">{{$player->description}}</textarea>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-secondary">
