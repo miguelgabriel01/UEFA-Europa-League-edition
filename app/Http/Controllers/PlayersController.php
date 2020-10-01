@@ -44,7 +44,7 @@ class PlayersController extends Controller
      $validatedData = $request ->validate([
         'name' => ['required','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
         'email' => [ 'email:rfc,dns','required','unique:players'],//o email deve ser unico para cada jogador e é obrigatorio
-        'number' => ['required','integer','unique:players','min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
+        'number' => ['required','unique:players','min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
         'nationality' => ['required'],//obrigatorio
         'age' => ['required','integer'],
         'position' => ['required'],
@@ -101,7 +101,7 @@ class PlayersController extends Controller
      $validatedData = $request ->validate([
         'name' => ['required','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
         'email' => ['required',Rule::unique('players')->ignore($player)],//o email deve ser unico para cada jogador e é obrigatorio
-        'number' => ['required',Rule::unique('players')->ignore($player),'max:11','min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
+        'number' => ['required',Rule::unique('players')->ignore($player),'min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
         'nationality' => ['required'],//obrigatorio
         'age' => ['required'],
         'description' => ['required'],

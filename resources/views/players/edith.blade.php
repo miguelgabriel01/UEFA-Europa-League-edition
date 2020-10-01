@@ -69,7 +69,7 @@
                         <div class="form-group row">
                             <label for="number" class="col-md-4 col-form-label text-md-right">{{ __('Numero') }}</label>
                             <div class="col-md-6">
-                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{$player->number}}" require=""  rautofocus maxlength="100">
+                                <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" value="{{$player->number}}" require=""  rautofocus maxlength="100">
                                 @error('number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

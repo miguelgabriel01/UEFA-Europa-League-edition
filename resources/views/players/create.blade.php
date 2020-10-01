@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('numero') }}</label>
                             <div class="col-md-6">
-                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" required autofocus value="{{old('number')}}" >
+                                <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" required autofocus value="{{old('number')}}" >
                                 @error('number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
