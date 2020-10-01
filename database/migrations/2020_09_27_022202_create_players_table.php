@@ -15,10 +15,10 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);//nome do jogador
-            $table->string('nationality',50);//pais de origem 
-            $table->string('age',10);//idade
-            $table->string('position',50);//posição em campo
+            $table->string('name', 100);//nome do jogador
+            $table->string('nationality');//pais de origem 
+            $table->string('age');//idade
+            $table->string('position');//posição em campo
             $table->text('description');// url da foto do jogador
 
             $table->unsignedBigInteger('user_id');

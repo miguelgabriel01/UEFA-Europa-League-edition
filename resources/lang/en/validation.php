@@ -93,7 +93,7 @@ return [
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
-    'password' => 'The password is incorrect.',
+    'password' => 'Senha incorreta.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'The :attribute field is required.',
@@ -118,6 +118,7 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -130,11 +131,29 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required' => 'Informe um E-mail valido',
         ],
-    ],
+        'age' => [
+            'required' => 'Informe a idade do atleta.',
+        ],
+        'name' => [
+            'required' => 'Informe o nome do atleta.',
+            'unique' => 'O nome já esta em uso.',
+            'max' => 'O nome deve conter no maximo 100 caracteres.'
+        ],
+        'position' => [
+            'required' => 'Informe a posição que o atleta joga.',
+        ],
+        'nationality' => [
+            'required' => 'Informe a nacionalidade do atleta',
+        ],
+        'description' => [
+            'required' => 'A descrição sobre o atleta é obrigatória',
+            'max' => 'A descrição deve conter no maximo 500 caracteres.'
+        ],
 
+        ],
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

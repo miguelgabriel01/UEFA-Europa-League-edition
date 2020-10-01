@@ -21,6 +21,21 @@
             <div class="card">
                 <div class="card-header text-light bg-dark">{{ __('Cadastre seu jogador') }}</div>
 
+
+
+                <!--@if ($errors->any())
+                   <div class="alert alert-danger">
+                          <strong>Ops!</strong>existem problemas com os dados recebidos <br><br>
+                     <ul>
+                        @foreach($errors->all() as $error)
+                        <li>
+                 {{$error}}
+                        </li>
+                        @endforeach
+                   </ul>
+                 </div>
+               @endif!-->
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('players.store') }}">
                         @csrf
@@ -28,21 +43,36 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" autofocus maxlength="100">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Nacionalidade') }}</label>
                             <div class="col-md-6">
-                                <input id="nationality" type="text" class="form-control @error('email') is-invalid @enderror" name="nationality" value='' required autocomplete="email">
+                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{old('nationality')}}"  >
+                                @error('nationality')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Idade') }}</label>
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age"  required autocomplete="age" autofocus>
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age"  autofocus value="{{old('age')}}" >
+                                @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -70,9 +100,14 @@
                         </div>!-->
 
                         <div class="form-group row">
-                            <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
                             <div class="col-md-6">
-                                <textarea id="nationality" class="form-control @error('email') is-invalid @enderror" name="description" value='' maxlength="250" required autocomplete="email"></textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value='' maxlength="510" value="" >{{old('description')}}</textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

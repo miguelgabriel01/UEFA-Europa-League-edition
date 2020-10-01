@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Players;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;//classe de autenticação
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PlayersController extends Controller
 {
@@ -38,8 +40,16 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-                //Post::create($request->all());
-                $player = new Players($request->all());///criamos
+               //Fazemos a validação dos campos de titulo e corpo da postagem
+     $validatedData = $request ->validate([
+        'name' => ['required','unique:players','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'nationality' => ['required'],//obrigatorio
+        'age' => ['required'],
+        'position' => ['required'],
+        'description' => ['required'],
+    ]);
+
+        $player = new Players($validatedData);///criamos
 
                 $player->user_id = Auth::id();//identificamos o autor
                 $player->save();//salvamos
@@ -85,6 +95,14 @@ class PlayersController extends Controller
      */
     public function update(Request $request, Players $player)
     {
+                       //Fazemos a validação dos campos de titulo e corpo da postagem
+     $validatedData = $request ->validate([
+        'name' => ['required', Rule::unique('players')->ignore($player)],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'nationality' => ['required'],//obrigatorio
+        'age' => ['required'],
+        'description' => ['required'],
+    ]);
+
         if($player->user_id===Auth::id()){
             $player->update($request->all());
             return redirect()->route('players.index')->with('success', 'Post atualizado com sucesso');
@@ -95,6 +113,7 @@ class PlayersController extends Controller
                                      ->withInput();
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
