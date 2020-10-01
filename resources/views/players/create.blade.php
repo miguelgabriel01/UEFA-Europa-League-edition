@@ -43,8 +43,32 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" autofocus maxlength="100">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" maxlength="100"  value="{{old('name')}}" required maxlength="2" autofocus maxlength="100">
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="numero" class="col-md-4 col-form-label text-md-right">{{ __('numero') }}</label>
+                            <div class="col-md-6">
+                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" required autofocus value="{{old('number')}}" >
+                                @error('number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('email') }}</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required  autofocus value="{{old('email')}}" >
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -55,7 +79,7 @@
                         <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Nacionalidade') }}</label>
                             <div class="col-md-6">
-                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{old('nationality')}}"  >
+                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" required maxlength="2" value="{{old('nationality')}}"  >
                                 @error('nationality')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +91,7 @@
                         <div class="form-group row">
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Idade') }}</label>
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age"  autofocus value="{{old('age')}}" >
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age"   required autofocus value="{{old('age')}}" >
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -92,17 +116,10 @@
                         </div>
                         </div>
 
-                        <!--<div class="form-group row">
-                            <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('URL Foto*') }}</label>
-                            <div class="col-md-6">
-                                <input id="photo" type="text" class="form-control @error('name') is-invalid @enderror" name="photo"  required autocomplete="photo" autofocus>
-                            </div>
-                        </div>!-->
-
                         <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value='' maxlength="510" value="" >{{old('description')}}</textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description"  required maxlength="500" value="" >{{old('description')}}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

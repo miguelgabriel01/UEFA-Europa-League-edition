@@ -136,6 +136,7 @@ return [
         ],
         'age' => [
             'required' => 'Informe a idade do atleta.',
+            'integer' => 'a idade do atleta não pode ser em formato de texto.',
         ],
         'name' => [
             'required' => 'Informe o nome do atleta.',
@@ -151,6 +152,19 @@ return [
         'description' => [
             'required' => 'A descrição sobre o atleta é obrigatória',
             'max' => 'A descrição deve conter no maximo 500 caracteres.'
+        ],
+        'email' => [
+            'required' => 'Informe o Email do atleta.',
+            'unique' => 'O Email já esta em uso.',
+            'email' => 'o Email precisa ser valido.',
+        ],
+
+        'number' => [
+            'required' => 'Informe o numero do atleta.',
+            'unique' => 'O numero já esta em uso.',
+            'max' => 'O numero deve conter no maximo 11 digitos.',
+            'min' => 'O numero deve conter, no minino, 9 digitos',
+            'integer' => 'O numero não pode ser tipo texto.',
         ],
 
         ],

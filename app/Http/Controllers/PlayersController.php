@@ -42,9 +42,11 @@ class PlayersController extends Controller
     {
                //Fazemos a validação dos campos de titulo e corpo da postagem
      $validatedData = $request ->validate([
-        'name' => ['required','unique:players','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'name' => ['required','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'email' => [ 'email:rfc,dns','required','unique:players'],//o email deve ser unico para cada jogador e é obrigatorio
+        'number' => ['required','integer','unique:players','min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
         'nationality' => ['required'],//obrigatorio
-        'age' => ['required'],
+        'age' => ['required','integer'],
         'position' => ['required'],
         'description' => ['required'],
     ]);
@@ -81,7 +83,7 @@ class PlayersController extends Controller
             }
             else{
                 return redirect()->route('players.index')
-                                         ->with('error', 'você não autorização para editar esta publicação. por favor, vá dormi')
+                                         ->with('error', 'você não autorização para editar os dados deste jogador')
                                          ->withInput();
             }
     }
@@ -97,7 +99,9 @@ class PlayersController extends Controller
     {
                        //Fazemos a validação dos campos de titulo e corpo da postagem
      $validatedData = $request ->validate([
-        'name' => ['required', Rule::unique('players')->ignore($player)],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'name' => ['required','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
+        'email' => ['required',Rule::unique('players')->ignore($player)],//o email deve ser unico para cada jogador e é obrigatorio
+        'number' => ['required',Rule::unique('players')->ignore($player),'max:11','min:9'],//o numero vai ser unico, é obrigatorio, e deve conter entre 11 e 9 digitos
         'nationality' => ['required'],//obrigatorio
         'age' => ['required'],
         'description' => ['required'],
@@ -105,11 +109,11 @@ class PlayersController extends Controller
 
         if($player->user_id===Auth::id()){
             $player->update($request->all());
-            return redirect()->route('players.index')->with('success', 'Post atualizado com sucesso');
+            return redirect()->route('players.index')->with('success', 'Atleta atualizado com sucesso');
         }
         else{
             return redirect()->route('players.index')
-                                     ->with('error', 'você não autorização para editar esta publicação')
+                                     ->with('error', 'você não autorização para editar as informações sobre este jogador')
                                      ->withInput();
         }
     }
@@ -125,7 +129,7 @@ class PlayersController extends Controller
     {
         if($player->user_id===Auth::id()){
             $player->delete();
-            return redirect()->route('players.index')->with('success', 'Post deletado com sucesso');
+            return redirect()->route('players.index')->with('success', 'Atleta deletado com sucesso');
         }
         else{
             return redirect()->route('players.index')

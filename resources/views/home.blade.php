@@ -26,8 +26,9 @@
               <p class="text-secondary"><b>{{$players->description}}</b>
             </p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-
+                <div class="">
+                  <small>{{$players->email}}</small></br>
+                  <small>{{$players->number}}</small>
               </div>
                 <small class="text-muted">{{$players->id}}</small>
               </div>

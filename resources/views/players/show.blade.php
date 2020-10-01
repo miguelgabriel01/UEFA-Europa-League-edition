@@ -35,10 +35,18 @@
               <b>Jogador: </b>{{$player->name}}<br>
               <b>Posição em campo:</b> {{$player->position}}<br>
               <b>Nacionalidade:</b> {{$player->nationality}}<br>
-              <b>Idade:</b> {{$player->age}}</p>
+              <b>Idade:</b> {{$player->age}}<br><b>E-mail: </b>{{$player->email}}<br><b>Numero: </b>{{$player->number}}</p>
 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+
+                <form action="{{route('players.destroy',$player->id)}}" method="POST">
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{route('players.edit',$player->id)}}">Editar</a>
+
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Apagar</button>
+                  </form>
 
                 </div>
                 <small class="text-muted">{{$player->id}}</small>

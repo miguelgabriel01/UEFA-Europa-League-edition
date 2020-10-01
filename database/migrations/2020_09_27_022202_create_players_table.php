@@ -16,6 +16,9 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);//nome do jogador
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('number');
             $table->string('nationality');//pais de origem 
             $table->string('age');//idade
             $table->string('position');//posição em campo

@@ -14,7 +14,7 @@
 </div>
 </div>
 
-                @if ($errors->any())
+                <!--@if ($errors->any())
                    <div class="alert alert-danger">
                           <strong>Ops!</strong>existem problemas com os dados recebidos <br><br>
                      <ul>
@@ -25,7 +25,7 @@
                         @endforeach
                    </ul>
                  </div>
-               @endif
+               @endif!-->
 
 
 
@@ -43,7 +43,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$player->name}}"  rautofocus maxlength="100">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" maxlength="100"  value="{{$player->name}}" require="" rautofocus maxlength="100">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -54,9 +54,37 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$player->email}}"  require="" rautofocus >
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="number" class="col-md-4 col-form-label text-md-right">{{ __('Numero') }}</label>
+                            <div class="col-md-6">
+                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{$player->number}}" require=""  rautofocus maxlength="100">
+                                @error('number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('nacionalidade') }}</label>
                             <div class="col-md-6">
-                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{$player->nationality}}" >
+                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" require=""  value="{{$player->nationality}}" >
                                 @error('nationality')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -69,7 +97,7 @@
                         <div class="form-group row">
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Idade') }}</label>
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age"  value="{{$player->age}}">
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" require=""  value="{{$player->age}}">
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -82,7 +110,7 @@
                         <div class="form-group row">
                         <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('Posição') }}</label>
                         <div class="col-md-6">
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" class="form-control" require="" >
                             <!-- <option selected>Posição</option>!-->
                                 <option value="{{$player->position}}">{{$player->position}}</option>
                                 <option value="Goleiro">Goleiro</option>
@@ -92,6 +120,11 @@
                                 <option value="Volante">Volante</option>
                                 <option value="Meio campo">Meio campo</option>
                                 <option value="Atacante">Atacante</option>
+                                @error('position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 
                             </select>
                         </div>
@@ -100,7 +133,7 @@
                         <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value=''  maxlength="510" >{{$player->description}}</textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value='' require=""  maxlength="510" >{{$player->description}}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

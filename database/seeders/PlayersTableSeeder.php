@@ -17,6 +17,8 @@ class PlayersTableSeeder extends Seeder
         $players = [
             0 => [
                 'name' => 'Cristiano Ronaldo dos Santos Aveiro',
+                'email' => 'cristiano@gmail.com',
+                'number' => '55 81 992765185',
                 'nationality' => 'Português', 
                 'age' => ' 37',
                 'position' => 'ponta',
@@ -26,6 +28,8 @@ class PlayersTableSeeder extends Seeder
                 'updated_at' => date("Y-m-d H:i:s")],
              1 => [
                 'name' => 'Lionel Andrés Messi Cuccittini ',
+                'email' => 'messi@gmail.com',
+                'number' => '55 81 938777458',
                 'nationality' => 'Argentino', 
                 'age' => '35',
                 'position' => 'atacante',
@@ -35,6 +39,8 @@ class PlayersTableSeeder extends Seeder
                 'updated_at' => date("Y-m-d H:i:s")],
              2 => [
                 'name' => 'Neymar da Silva Santos Júnior',
+                'email' => 'neymar@gmail.com',
+                'number' => '55 81 993452627',
                 'nationality' => 'Brasileiro', 
                 'age' => '27',
                 'position' => 'atacante',
@@ -45,6 +51,8 @@ class PlayersTableSeeder extends Seeder
     
              3 => [
                 'name' => 'Alessandro Beti Rosa',
+                'email' => 'magrao@gmail.com',
+                'number' => '55 81 986754432',
                 'nationality' => 'Brasileiro', 
                 'age' => '40',
                 'position' => 'goleiro',
@@ -55,6 +63,8 @@ class PlayersTableSeeder extends Seeder
     
              4 => [
                 'name' => 'Toni Kroos',
+                'email' => 'tony@gmail.com',
+                'number' => '55 81 976859475',
                 'nationality' => 'Alemão', 
                 'age' => ' 32',
                 'position' => 'atacante',
@@ -65,6 +75,8 @@ class PlayersTableSeeder extends Seeder
 
                 5 => [
                     'name' => 'Robin van Persie',
+                    'email' => 'vanpersie@gmail.com',
+                    'number' => '55 81 992764256',
                     'nationality' => 'Holandês', 
                     'age' => '42',
                     'position' => 'atacante',
