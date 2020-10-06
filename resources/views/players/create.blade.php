@@ -79,7 +79,7 @@
                         <div class="form-group row">
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Nacionalidade') }}</label>
                             <div class="col-md-6">
-                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" required maxlength="2" value="{{old('nationality')}}"  >
+                                <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{old('nationality')}}"  >
                                 @error('nationality')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
