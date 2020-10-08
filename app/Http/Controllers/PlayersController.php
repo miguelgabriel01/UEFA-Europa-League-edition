@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Players;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;//classe de autenticação
 use Illuminate\Support\Facades\Validator;
@@ -49,12 +50,28 @@ class PlayersController extends Controller
         'age' => ['required','integer'],
         'position' => ['required'],
         'description' => ['required'],
+        'image' => ['mimes:jpeg,png','dimensions:min_width=200,min_height=200'],
     ]);
 
         $player = new Players($validatedData);///criamos
 
                 $player->user_id = Auth::id();//identificamos o autor
                 $player->save();//salvamos
+
+                if($request->hasFile('image') and $request->file('image')->isValid()){
+                    $extension = $request->image->extension();//deixo a estensão da img isolada
+                   
+                    //crio um nome para a img
+                    $image_name = now()->toDateTimeString()."_".substr(base64_encode(sha1(mt_rand())),0,10);
+        
+                    $path = $request->image->storeAs('players',$image_name.".".$extension,'public');
+        
+                    $image = new Image();
+                    $image->players_id = $player->id;
+                    $image->path = $path;
+                    $image->save(); 
+                }
+
                 return redirect('players')->with('success', 'Jogador cadastrado com sucesso');
     } 
 
@@ -97,7 +114,7 @@ class PlayersController extends Controller
      */
     public function update(Request $request, Players $player)
     {
-                       //Fazemos a validação dos campos de titulo e corpo da postagem
+                       //Fazemos a validação dos campos de titulo e corpo da playeragem
      $validatedData = $request ->validate([
         'name' => ['required','max:100'],//obrigatorio,valor unico e tem que possuir no maximo, 255 caracteres
         'email' => ['required',Rule::unique('players')->ignore($player)],//o email deve ser unico para cada jogador e é obrigatorio
