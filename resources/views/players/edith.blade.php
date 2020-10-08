@@ -36,7 +36,7 @@
                 <div class="card-header text-light bg-dark">{{ __('Edite os dados sobre seu jogador') }}</div>
 
                 <div class="card-body">
-                <form action="{{ route('players.update' , $player->id) }}" method="POST">                    
+                <form action="{{ route('players.update' , $player->id) }}" method="POST"  enctype="multipart/form-data">                    
                     @csrf 
                     @method( 'PUT')
 
@@ -128,6 +128,14 @@
 
                             </select>
                         </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="foto" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
+                            <div class="col-md-6">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('storage/'.$player->image->path)}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
+                            <input type="file" name="image"  id="image" class="form-control" value="{{old('image')}}"/>
+                            </div>
                         </div>
 
                         <div class="form-group row">

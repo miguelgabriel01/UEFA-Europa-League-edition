@@ -122,10 +122,32 @@ class PlayersController extends Controller
         'nationality' => ['required'],//obrigatorio
         'age' => ['required'],
         'description' => ['required'],
+        'image' => ['mimes:jpeg,png','dimensions:min_width=200,min_height=200'],
+
     ]);
 
         if($player->user_id===Auth::id()){
             $player->update($request->all());
+
+            if($request->hasFile('image') and $request->file('image')->isValid()){
+                $player->image->delete();
+
+                $extension = $request->image->extension();//deixo a estensão da img isolada
+           
+                //crio um nome para a img
+                $image_name = now()->toDateTimeString()."_".substr(base64_encode(sha1(mt_rand())),0,10);
+
+                $path = $request->image->storeAs('players',$image_name.".".$extension,'public');
+//                $path = $request->image->storeAs('public/posts',$image_name.".".$extension,'public');
+
+                $image = new Image();
+                $image->path = $path;
+                $image->players_id = $player->id;
+                $image->save(); 
+    
+
+            }
+
             return redirect()->route('players.index')->with('success', 'Atleta atualizado com sucesso');
         }
         else{

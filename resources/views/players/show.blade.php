@@ -27,7 +27,7 @@
 
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-          @isset($player->image->path)
+          @isset($player->image)
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('storage/'.$player->image->path)}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
           @endisset
            <div class="card-body">
