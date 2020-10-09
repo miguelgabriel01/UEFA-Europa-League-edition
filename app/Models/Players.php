@@ -17,7 +17,7 @@ class Players extends Model
 
     protected static function booted(){
 
-        /*
+        
         //quando a img for exibida
         static::retrieved(function(Players $player){
             Log::channel('stderr')->info('RETRIEVED..  ' .$player->id);//o id do player recuperado
@@ -34,10 +34,10 @@ class Players extends Model
 
         //evento para deletar o player com a img
         static::deleting(function(Players $player){
-            Log::channel('stderr')->info('Evento playerDeletado..  ' .$player->image->path);
-            Storage::disk('public')->delete($player->image->url);
+            Log::channel('stderr')->info('Evento playerDeletado..  ' .$player->image);
+            Storage::disk('public')->delete($player->image);
         });
-*/
+
 
     }
 

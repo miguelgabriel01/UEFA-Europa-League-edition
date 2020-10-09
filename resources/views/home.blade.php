@@ -22,6 +22,7 @@
               <b>Jogador: </b>{{$players->name}}<br>
               <b>Posição em campo:</b> {{$players->position}}<br>
               <b>Nacionalidade:</b> {{$players->nationality}}<br>
+              <b>Time atual:</b> {{$players->user->name}}<br>
               <b>Idade:</b> {{$players->age}}</p>
               <br><br>
 

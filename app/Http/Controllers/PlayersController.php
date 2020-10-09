@@ -50,7 +50,7 @@ class PlayersController extends Controller
         'age' => ['required','integer'],
         'position' => ['required'],
         'description' => ['required'],
-        'image' => ['mimes:jpeg,png','dimensions:min_width=200,min_height=200'],
+        //'image' => ['dimensions:min_width=200,min_height=200'],
     ]);
 
         $player = new Players($validatedData);///criamos
@@ -122,7 +122,7 @@ class PlayersController extends Controller
         'nationality' => ['required'],//obrigatorio
         'age' => ['required'],
         'description' => ['required'],
-        'image' => ['mimes:jpeg,png','dimensions:min_width=200,min_height=200'],
+       // 'image' => ['mimes:jpeg,jpg,png','dimensions:min_width=200,min_height=200'],
 
     ]);
 
@@ -130,7 +130,7 @@ class PlayersController extends Controller
             $player->update($request->all());
 
             if($request->hasFile('image') and $request->file('image')->isValid()){
-                $player->image->delete();
+                //$player->image->delete();
 
                 $extension = $request->image->extension();//deixo a estensão da img isolada
            

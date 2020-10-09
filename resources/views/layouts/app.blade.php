@@ -45,7 +45,7 @@
                <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>!-->
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="http://localhost:8000/">
                     UEFA-League
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -82,6 +82,10 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }}
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route ('players.index')}}">Listar seus jogadores</a>
+                                    <a class="dropdown-item" href="{{ route ('players.create')}}">Cadastar novo jogador</a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

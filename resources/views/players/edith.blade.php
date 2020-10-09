@@ -133,8 +133,10 @@
                         <div class="form-group row">
                             <label for="foto" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
                             <div class="col-md-6">
+                            @isset($player->image)
                             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('storage/'.$player->image->path)}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
-                            <input type="file" name="image"  id="image" class="form-control" value="{{old('image')}}"/>
+                            @endisset
+                            <input type="file" name="image"  id="image" class="form-control" />
                             </div>
                         </div>
 
