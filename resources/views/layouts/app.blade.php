@@ -106,7 +106,7 @@
 
 <!-- Copyright -->
 <div class="footer-copyright text-center py-3">© 2020 Copyright:
-  <a href="https://mdbootstrap.com/"> mgbs@discente.ifpe.edu.br</a>
+  <a href="https://github.com/miguelgabriel01"> mgbs@discente.ifpe.edu.br</a>
 </div>
 <!-- Copyright -->
 
